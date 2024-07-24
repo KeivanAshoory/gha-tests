@@ -1,0 +1,9 @@
+name: Pipeline
+on:
+  workflow_dispatch:
+  
+jobs:
+  pre-deploy:
+    uses: ./.github/workflows/pre-deploy.yml
+  deploy:
+    uses: ./.github/workflows/pre-deploy.yml
