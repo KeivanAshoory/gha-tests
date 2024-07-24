@@ -1,0 +1,11 @@
+name: Pre deploy
+
+on:
+  workflow_run:
+  
+jobs:
+  pre-deploy-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Pre deploy job started."
+      - run: echo "Pre deploy job completed."
