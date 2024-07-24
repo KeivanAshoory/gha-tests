@@ -1,0 +1,11 @@
+name: Deploy
+
+on:
+  workflow_run:
+  
+jobs:
+  deploy-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploy job started."
+      - run: echo "Deploy job completed."
