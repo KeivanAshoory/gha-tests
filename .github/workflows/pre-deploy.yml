@@ -1,7 +1,7 @@
 name: Pre deploy
 
 on:
-  workflow_run:
+  workflow_call:
   
 jobs:
   pre-deploy-job:
