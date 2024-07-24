@@ -5,6 +5,9 @@ on:
 jobs:
   pre-deploy:
     uses: ./.github/workflows/pre-deploy.yml
+  deploy-approval:
+    uses: ./.github/workflows/deploy-approval.yml
+    needs: [pre-deploy]
   deploy:
     uses: ./.github/workflows/pre-deploy.yml
-    needs: [pre-deploy]
+    needs: [pre-deploy, deploy-approval]
