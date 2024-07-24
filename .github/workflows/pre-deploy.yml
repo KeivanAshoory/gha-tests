@@ -5,6 +5,7 @@ on:
   
 jobs:
   pre-deploy-job:
+    environment: prod
     runs-on: ubuntu-latest
     steps:
       - run: echo "Pre deploy job started."
