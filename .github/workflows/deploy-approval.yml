@@ -1,0 +1,11 @@
+name: Deploy Approval
+
+on:
+  workflow_call:
+  
+jobs:
+  deploy-job:
+    environment: prod-approval
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Approval Provided!"
