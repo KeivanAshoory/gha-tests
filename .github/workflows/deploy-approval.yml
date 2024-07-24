@@ -4,7 +4,7 @@ on:
   workflow_call:
   
 jobs:
-  deploy-job:
+  deploy-approval-job:
     environment: prod-approval
     runs-on: ubuntu-latest
     steps:
