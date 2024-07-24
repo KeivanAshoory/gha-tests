@@ -9,5 +9,5 @@ jobs:
     uses: ./.github/workflows/deploy-approval.yml
     needs: [pre-deploy]
   deploy:
-    uses: ./.github/workflows/pre-deploy.yml
+    uses: ./.github/workflows/deploy.yml
     needs: [pre-deploy, deploy-approval]
