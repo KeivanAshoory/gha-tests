@@ -1,0 +1,36 @@
+name: Restrict Branch Merges
+
+on:
+  pull_request:
+    branches:
+      - test
+      - staging
+      - prod
+
+jobs:
+  restrict-merge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Verify merge source branch
+        run: |
+          BASE_BRANCH="${{ github.event.pull_request.base.ref }}"
+          HEAD_BRANCH="${{ github.event.pull_request.head.ref }}"
+
+          if [[ "$BASE_BRANCH" == "test" && "$HEAD_BRANCH" != "dev" ]]; then
+            echo "Merges to 'test' are only allowed from 'dev'."
+            exit 1
+          elif [[ "$BASE_BRANCH" == "staging" && "$HEAD_BRANCH" != "test" ]]; then
+            echo "Merges to 'staging' are only allowed from 'test'."
+            exit 1
+          elif [[ "$BASE_BRANCH" == "prod" && "$HEAD_BRANCH" != "staging" ]]; then
+            echo "Merges to 'prod' are only allowed from 'staging'."
+            exit 1
+          fi
+
+      - name: Success
+        run: echo "Merge rules passed!"
+
