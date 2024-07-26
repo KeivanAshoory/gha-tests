@@ -7,6 +7,7 @@ on:
       - staging
       - prod
 
+
 jobs:
   restrict-merge:
     runs-on: ubuntu-latest
@@ -34,3 +35,94 @@ jobs:
       - name: Success
         run: echo "Merge rules passed!"
 
+
+
+
+
+
+
+# name: Restrict Branch Merges
+
+# on:
+#   pull_request:
+#     branches:
+#       - test
+#       - staging
+#       - prod
+
+# jobs:
+#   restrict-merge:
+#     runs-on: ubuntu-latest
+
+#     env:
+#       ALLOWED_BRANCHES: '{"test": ["dev"], "staging": ["test"], "prod": ["staging"]}'
+
+#     steps:
+#       - name: Verify merge source branch
+#         run: |
+#           BASE_BRANCH="${{ github.event.pull_request.base.ref }}"
+#           HEAD_BRANCH="${{ github.event.pull_request.head.ref }}"
+
+#           # Parse the ALLOWED_BRANCHES variable
+#           ALLOWED=$(echo '${{ env.ALLOWED_BRANCHES }}' | jq -r --arg BASE "$BASE_BRANCH" '.[$BASE][]')
+          
+#           # Check if the HEAD_BRANCH is in the allowed list
+#           if [[ ! " ${ALLOWED[@]} " =~ " ${HEAD_BRANCH} " ]]; then
+#             echo "Merges to '$BASE_BRANCH' are only allowed from one of the following branches: ${ALLOWED[*]}"
+#             exit 1
+#           fi
+
+#       - name: Success
+#         if: success()
+#         run: echo "Merge rules passed!"
+
+
+        
+
+
+
+
+
+
+
+
+
+
+# name: Restrict Branch Merges
+
+# on:
+#   pull_request:
+#     branches:
+#       - test
+#       - staging
+#       - prod
+
+# jobs:
+#   restrict-merge:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Verify merge source branch
+#         run: |
+#           declare -A ALLOWED_HEAD_BRANCHES
+#           ALLOWED_HEAD_BRANCHES[test]="dev"
+#           ALLOWED_HEAD_BRANCHES[staging]="test"
+#           ALLOWED_HEAD_BRANCHES[prod]="staging"
+
+#           BASE_BRANCH="${{ github.event.pull_request.base.ref }}"
+#           HEAD_BRANCH="${{ github.event.pull_request.head.ref }}"
+
+#           if [[ "${ALLOWED_HEAD_BRANCHES[$BASE_BRANCH]}" != "$HEAD_BRANCH" ]]; then
+#             echo "Merges to '$BASE_BRANCH' are only allowed from '${ALLOWED_HEAD_BRANCHES[$BASE_BRANCH]}'."
+#             exit 1
+#           fi
+
+#       - name: Success
+#         run: echo "Merge rules passed!"
+
+
+
+        
