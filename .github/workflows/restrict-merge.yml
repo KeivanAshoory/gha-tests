@@ -21,7 +21,7 @@ jobs:
           BASE_BRANCH="${{ github.event.pull_request.base.ref }}"
           HEAD_BRANCH="${{ github.event.pull_request.head.ref }}"
 
-          if [[ "$BASE_BRANCH" == "test" && "$HEAD_BRANCH" != "dev" ]]; then
+          if [[ "$BASE_BRANCH" == "test" && "$HEAD_BRANCH" != "develop" ]]; then
             echo "Merges to 'test' are only allowed from 'dev'."
             exit 1
           elif [[ "$BASE_BRANCH" == "staging" && "$HEAD_BRANCH" != "test" ]]; then
