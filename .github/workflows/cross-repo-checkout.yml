@@ -1,0 +1,11 @@
+name: Cross Repo Access Test
+on: 
+  workflow_dispatch:
+
+jobs:
+  test1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: This Repo
+        uses: actions/checkout@v4
+      - run: ls -ltra
