@@ -24,6 +24,8 @@ jobs:
           repository: KeivanAshoory/gha-tests-2
           path: that-repo
 
-      - run: ls -ltraR
+      - run: ls
+      - run: cd that-repo
+      - run: ls
 
           
